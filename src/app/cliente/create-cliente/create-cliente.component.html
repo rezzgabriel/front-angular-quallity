@@ -1,0 +1,103 @@
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/">Inicio</a></li>
+    <li class="breadcrumb-item"><a routerLink="/clientes">Clientes</a></li>
+    <li class="breadcrumb-item active">
+      Cadastro de clientes
+    </li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">
+      Cadastro de clientes
+    </h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="/clientes" class="btn btn-light float-right">
+      << Voltar
+    </a>
+  </div>
+</div>
+
+<form #f="ngForm" (ngSubmit) ="onSubmit(f)">
+
+  <div class="card">
+    <div class="card-header">
+      Informações sobre o Cliente
+    </div>
+
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome</label>
+          <input class="form-control" type="text" id="nome" required [(ngModel)] = "cliente.nome" required #nome="ngModel" name="nome">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="cpf">CPF</label>
+          <p-inputMask class="form-control" placeholder="Digite seu CPF" mask="999.999.999-99" id="cpf" [(ngModel)] = "cliente.cpf" required  name="cpf"></p-inputMask>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>E-mail</label>
+          <input class="form-control" type="email" id="email" [(ngModel)] = "cliente.email" required #email="ngModel" name="email">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>Telefone</label>
+          <p-inputMask class="form-control" placeholder="Digite seu telefone" mask="(99) 99999-9999" id="telefone" [(ngModel)] = "cliente.telefone" required  name="telefone"></p-inputMask>
+        </div>
+
+        <div class="form-group col-md-3">
+          <label>CEP</label>
+          <input class="form-control" type="text" id="cep" [(ngModel)] = "cliente.cep"  name="cep" required #cep="ngModel" (blur)="consultaCEP($event.target.value, f)">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label>Bairro</label>
+          <input class="form-control" type="text" id="bairro" [(ngModel)] = "cliente.bairro" required #bairro="ngModel" name="bairro">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label>Cidade</label>
+          <input class="form-control" type="text" id="cidade" [(ngModel)] = "cliente.cidade" required #cidade="ngModel" name="cidade">
+        </div>
+
+        <div class="form-group col-md-3">
+          <label>UF</label>
+          <input class="form-control" type="text" id="uf" [(ngModel)] = "cliente.uf" required #uf="ngModel" name="uf">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>Rua</label>
+          <input class="form-control" type="text" id="logradouro" [(ngModel)] = "cliente.logradouro" required #logradouro="ngModel" name="logradouro">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label>Complemento</label>
+          <input class="form-control" type="text" id="complemento" [(ngModel)] = "cliente.complemento" #complemento="ngModel" name="complemento">
+        </div>
+
+        <div class="form-group col-md-2">
+          <label>Número</label>
+          <input class="form-control" type="text" id="numero" [(ngModel)] = "cliente.numero" required #numero="ngModel" name="numero">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="validaForm">
+    Campos obrigatórios não prenchidos
+  </div>
+
+  <div *ngIf="loading" class="spinner-border" style="position: absolute; right: 50%" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <button type="submit" class="btn btn-dark btn-lg float-right mt-3" >Salvar</button>
+
+
+</form>

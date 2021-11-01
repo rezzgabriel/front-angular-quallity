@@ -1,0 +1,64 @@
+<nav class="mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="">Inicio</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a routerLink=""> Clientes</a>
+    </li>
+    <li class="breadcrumb-item active">
+      {{ cliente.nome }}
+    </li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">
+     {{ cliente.nome }}
+    </h1>
+  </div>
+  <div class="col-md">
+    <button (click) = "atualizaCliente(cliente.id)" class="btn btn-info float-right">
+      Editar
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <h5>Detalhes:</h5>
+  <div>
+    <label><b>Nome: </b></label> {{ cliente.nome }}
+  </div>
+  <div>
+    <label><b>CPF: </b></label> {{ cliente.cpf | cpf }}
+  </div>
+  <div>
+    <label><b>E-mail: </b></label> {{ cliente.email }}
+  </div>
+  <div>
+    <label><b>Telefone: </b></label> {{ cliente.telefone }}
+  </div>
+  <div>
+    <label><b>Endereço cliente: </b></label>
+  </div>
+  <div>
+    <label><b>Rua: </b></label> {{ cliente.logradouro }}
+  </div>
+  <div>
+    <label><b>Número: </b></label> {{ cliente.numero }}
+  </div>
+  <div>
+    <label><b>CEP: </b></label> {{ cliente.cep }}
+  </div>
+  <div>
+    <label><b>Bairro: </b></label> {{ cliente.bairro }}
+  </div>
+  <div>
+    <label><b>Cidade: </b></label> {{ cliente.cidade }} - {{ cliente.uf }}
+  </div>
+
+
+
+
+</div>
